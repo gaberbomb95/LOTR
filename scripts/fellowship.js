@@ -156,7 +156,7 @@ for (bud of buddies) {
 const leaveTheShire = () => {
   // 1. grab the hobbits (the ul in which they reside) and move them to Rivendell
       // hint: the hobbits ul is a childNode of The-Shire-- there is way to get a list of childNodes
-      
+       $("#The-Shire ul").children().appendTo("#Rivendell")
 };
 
 // COMMIT YOUR WORK
@@ -169,8 +169,8 @@ const beautifulStranger = () => {
 
   // 1. change the buddy 'Strider' textnode to "Aragorn"
      // hint: You can get a list of elements by tag name, such as 'aside'
-
-};
+     $('aside ul li:nth-of-type(4)').text('Aragorn');
+    };
 
 // COMMIT YOUR WORK
 // The commit message should read: "Chapter 7 complete - Strider is changed to Aragorn"
@@ -181,13 +181,14 @@ const beautifulStranger = () => {
 const forgeTheFellowShip = () => {
 
   // 1. create a new div with an id 'the-fellowship'
-
+ const $div = $("<div>").attr("id", "the-fellowship")
   // 2. add an h1 with the text 'The Fellowship' to this new div
-
+  const $h1 = $("<h1>").text("The Fellowship").appendTo($div)
   // 3. append the fellowship to middle-earth
-
+ $div.appendTo("#middle-earth")
   // 4. add the unordered lists of hobbits and buddies to 'the-fellowship'
-
+  $("#Rivendell ul").appendTo("#the-fellowship")
+  $("#middle-earth aside ul").appendTo("#the-fellowship")
 };
 
 // COMMIT YOUR WORK
