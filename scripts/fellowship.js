@@ -156,7 +156,7 @@ for (bud of buddies) {
 const leaveTheShire = () => {
   // 1. grab the hobbits (the ul in which they reside) and move them to Rivendell
       // hint: the hobbits ul is a childNode of The-Shire-- there is way to get a list of childNodes
-       $("#The-Shire ul").children().appendTo("#Rivendell")
+       $("#The-Shire").children("ul").appendTo("#Rivendell")
 };
 
 // COMMIT YOUR WORK
@@ -169,7 +169,7 @@ const beautifulStranger = () => {
 
   // 1. change the buddy 'Strider' textnode to "Aragorn"
      // hint: You can get a list of elements by tag name, such as 'aside'
-     $('aside ul li:nth-of-type(4)').text('Aragorn');
+     $('.buddy').eq(3).text('Aragorn');
     };
 
 // COMMIT YOUR WORK
@@ -186,9 +186,9 @@ const forgeTheFellowShip = () => {
   const $h1 = $("<h1>").text("The Fellowship").appendTo($div)
   // 3. append the fellowship to middle-earth
  $div.appendTo("#middle-earth")
-  // 4. add the unordered lists of hobbits and buddies to 'the-fellowship'
-  $("#Rivendell ul").appendTo("#the-fellowship")
-  $("#middle-earth aside ul").appendTo("#the-fellowship")
+  
+  $(".hobbit").appendTo("#the-fellowship")
+  $(".buddy").appendTo("#the-fellowship")
 };
 
 // COMMIT YOUR WORK
@@ -200,7 +200,7 @@ const forgeTheFellowShip = () => {
 const theBalrog = () => {
 
   // 1. change the 'Gandalf' text to 'Gandalf the White'
-
+$(".buddy").eq(0).text("Gandalf the White").addClass("the-white")
   // 2. add a class "the-white" to this element
 
   // 3. in the style.css file, add a css rule to make elements of the class "the-white" have a white background and a grey border
@@ -216,11 +216,10 @@ const theBalrog = () => {
 const hornOfGondor = () => {
 
   // 1. create a pop-up alert that the horn of gondor has been blown
-
+alert("* Gondor's Horn Sounds*")
   // 2. Boromir's been killed by the Uruk-hai! Put a linethrough on Boromir's name
-
+$(".buddy").eq(4).css("text-decoration", "line-through")
   // 3. Tricky: Remove the Uruk-Hai from the Baddies on the page
-
 };
 
 // COMMIT YOUR WORK
@@ -232,8 +231,10 @@ const hornOfGondor = () => {
 const itsDangerousToGoAlone = () => {
 
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
-
+$(".hobbit").eq(0).appendTo("#Mordor")
+$(".hobbit").eq(1).appendTo("#Mordor")
   // 2. add a div with an id of 'mount-doom' to Mordor
+const $div = $("<div>").attr("id", "mount-doom").appendTo("#Mordor")
 
 };
 
@@ -246,10 +247,12 @@ const itsDangerousToGoAlone = () => {
 const weWantsIt = () => {
 
   // 1. Create a div with an id of 'gollum' and add it to Mordor
-
+const $div = $("<div>").attr("id", "gollum").appendTo("#Mordor")
   // 2. Move the ring from Frodo and give it to Gollum
-
+$(".hobbit").eq(0).remove("#the-ring")
+$("#the-ring").appendTo($div)
   // 3. Move Gollum into Mount Doom
+  $div.appendTo("#mount-doom")
 
 };
 
@@ -262,11 +265,11 @@ const weWantsIt = () => {
 const thereAndBackAgain = () => {
 
   // 1. remove Gollum and the Ring from the DOM
-
+$("#gollum").remove()
   // 2. remove all the baddies from the DOM
-
+$(".baddy").remove()
   // 3. Move all the hobbits back to the shire
-
+$(".hobbit").appendTo("#The-Shire")
 };
 
 // COMMIT YOUR WORK
